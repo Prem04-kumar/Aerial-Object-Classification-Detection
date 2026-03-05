@@ -16,24 +16,24 @@ This project builds a deep learning model to classify aerial objects as either B
 ## 📁 Project Structure
 aerial-detection/
 │
-├── aerial_detection_final.ipynb
-├── streamlit_app.py
-├── requirements.txt
-├── README.md
-│
-├── models/
-│   └── best_model.keras
-│
+ ├── aerial_detection_final.ipynb
+ ├── streamlit_app.py
+ ├── requirements.txt
+ ├── README.md
+ │
+|── models/
+ │   └── best_model.keras
+ │
 └── classification_dataset/
-├── train/
-│   ├── bird/
-│   └── drone/
-├── valid/
-│   ├── bird/
-│   └── drone/
-└── test/
-├── bird/
-└── drone/
+ ├── train/
+ │   ├── bird/
+ │   └── drone/
+ ├── valid/
+ │   ├── bird/
+ │   └── drone/
+ └── test/
+ ├── bird/
+ └── drone/
 
 ## 📦 Dataset
 Download the classification dataset from Google Drive:
