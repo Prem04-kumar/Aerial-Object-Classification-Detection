@@ -33,7 +33,7 @@ aerial-detection/
  │   └── drone/
  └── test/
  ├── bird/
- └── drone/
+  └── drone/
 
 ## 📦 Dataset
 Download the classification dataset from Google Drive:
