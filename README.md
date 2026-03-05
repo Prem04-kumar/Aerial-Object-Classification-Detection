@@ -10,8 +10,14 @@ This project builds a deep learning model to classify aerial objects as either B
 
 
 ## 🎯 Results
-* ModelTest AccuracyCustom CNN~67%EfficientNetB0 (Transfer Learning)~98.6% ✅
-* Best Model: EfficientNetB0 with 98.6% accuracy
+## 📊 Model Performance Comparison
+
+| Model | Type | Test Accuracy |
+|------|------|---------------|
+| Custom CNN | Built from scratch | ~67% |
+| EfficientNetB0 | Transfer Learning | ~98.6% ✅ |
+
+🏆 **Best Model:** EfficientNetB0 with **98.6% accuracy**
 
 ## 📁 Project Structure
 
