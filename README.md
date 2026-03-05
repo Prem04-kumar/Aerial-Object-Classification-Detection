@@ -3,11 +3,9 @@
 
 ## 📌 Project Overview
 This project builds a deep learning model to classify aerial objects as either Bird 🐦 or Drone 🚁 using:
-
-## Custom CNN — Built from scratch
-## EfficientNetB0 — Transfer Learning from ImageNet
-## Streamlit Web App — Real-time classification
-
+- **Custom CNN — Built from scratch**
+- **EfficientNetB0 — Transfer Learning from ImageNet**
+- **Streamlit Web App — Real-time classification**
 
 ## 🎯 Results
 ## 📊 Model Performance Comparison
@@ -67,8 +65,7 @@ cd aerial-detection
 bashpip install -r requirements.txt
 ## Step 3 — Run the Streamlit app
 bashstreamlit run streamlit_app.py
-## Step 4 — Open in browser
-http://localhost:8501
+
 
 
 # 📊 Model Architecture
