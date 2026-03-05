@@ -14,26 +14,26 @@ This project builds a deep learning model to classify aerial objects as either B
 * Best Model: EfficientNetB0 with 98.6% accuracy
 
 ## 📁 Project Structure
-├── aerial_detection_final.ipynb  # Complete training notebook
-│                                 # (Data loading, preprocessing,
-│                                 #  Custom CNN, EfficientNetB0,
-│                                 #  Evaluation & Model Comparison)
-├── streamlit_app.py              # Streamlit web application
-│                                 # (Upload image & classify Bird/Drone)
-├── requirements.txt              # Project dependencies
-├── README.md                     # Project documentation
+aerial-detection/
+│
+├── aerial_detection_final.ipynb
+├── streamlit_app.py
+├── requirements.txt
+├── README.md
+│
 ├── models/
-│   └── best_model.keras          # Trained EfficientNetB0 model (see below)
-└── classification_dataset/       # Image dataset (see below)
-    ├── train/
-    │   ├── bird/   (1414 images)
-    │   └── drone/  (1248 images)
-    ├── valid/
-    │   ├── bird/   (217 images)
-    │   └── drone/  (225 images)
-    └── test/
-        ├── bird/   (121 images)
-        └── drone/  (94 images)
+│   └── best_model.keras
+│
+└── classification_dataset/
+├── train/
+│   ├── bird/
+│   └── drone/
+├── valid/
+│   ├── bird/
+│   └── drone/
+└── test/
+├── bird/
+└── drone/
 
 ## 📦 Dataset
 Download the classification dataset from Google Drive:
