@@ -64,7 +64,7 @@ cd aerial-detection
 ## Step 2 — Install dependencies
 bashpip install -r requirements.txt
 ## Step 3 — Run the Streamlit app
-bashstreamlit run streamlit_app.py
+streamlit run streamlit_app.py
 
 
 
