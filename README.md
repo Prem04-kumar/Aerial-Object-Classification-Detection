@@ -22,7 +22,7 @@ This project builds a deep learning model to classify aerial objects as either B
 ```
 aerial-detection/
 │
-├── aerial_detection_final.ipynb
+├── aerial_object.ipynb
 ├── streamlit_app.py
 ├── requirements.txt
 ├── README.md
