@@ -84,10 +84,10 @@ ParameterValueImage Size224 × 224Batch Size32OptimizerAdamLossBinary Crossentro
 
 ## 🌐 Streamlit App Features
 
-***** Upload any Bird or Drone image (JPG/PNG)
-******* Real-time classification with confidence score
-********Probability distribution chart
-****Supports EfficientNet preprocessing
+- **Upload any Bird or Drone image (JPG/PNG)**
+- **Real-time classification with confidence score**
+- **Probability distribution chart**
+- **Supports EfficientNet preprocessing**
 
 ## 👨‍💻 Author
 A Prem Kumar
