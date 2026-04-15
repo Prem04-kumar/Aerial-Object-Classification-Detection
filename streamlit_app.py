@@ -2,7 +2,7 @@
 Aerial Object Classification & Detection
 -----------------------------------------
 Streamlit Deployment App
-Run:  streamlit run app/streamlit_app.py
+Run:  streamlit run C:\VSCODE\Aerial_project\streamlit_app.py
 """
 
 import os
@@ -63,17 +63,6 @@ def load_classifier(model_path: str):
     return tf.keras.models.load_model(model_path)
 
 
-@st.cache_resource(show_spinner="Loading YOLOv8 model …")
-def load_yolo(weights_path: str):
-    try:
-        from ultralytics import YOLO
-        if not os.path.exists(weights_path):
-            return None
-        return YOLO(weights_path)
-    except ImportError:
-        return None
-
-
 # ─────────────────────────────────────────────────────────────
 # Inference helpers
 # ─────────────────────────────────────────────────────────────
@@ -101,25 +90,6 @@ def classify(model, pil_img, preprocess_fn=None):
     return CLASS_LABELS[pred_class], confidence, prob
 
 
-def detect_objects(yolo_model, pil_img, conf_thresh=0.4):
-    """Return (detections_list, annotated_PIL_image)."""
-    import cv2
-    arr = np.array(pil_img.convert('RGB'))
-    results = yolo_model.predict(arr, conf=conf_thresh, verbose=False)
-    detections = []
-    class_map = {0: 'Bird 🐦', 1: 'Drone 🚁'}
-    for r in results:
-        for box in r.boxes:
-            detections.append({
-                'class': class_map.get(int(box.cls), 'Unknown'),
-                'confidence': float(box.conf),
-                'box': [int(v) for v in box.xyxy[0].tolist()],
-            })
-    annotated = results[0].plot()   # NumPy BGR
-    annotated_rgb = annotated[:, :, ::-1]  # BGR → RGB
-    return detections, Image.fromarray(annotated_rgb)
-
-
 # ─────────────────────────────────────────────────────────────
 # Sidebar – settings
 # ─────────────────────────────────────────────────────────────
@@ -128,23 +98,14 @@ with st.sidebar:
     st.title("⚙️ Settings")
 
     st.subheader("Classification Model")
+    # UPDATED: Replaced default with the absolute path provided
     clf_path = st.text_input(
         "Model path (.keras / .h5)",
-        value="models/efficientnetb0_finetuned_best.keras",
+        value=r"C:\VSCODE\Aerial_project\best_model.keras",
     )
     use_preprocess = st.selectbox(
         "Preprocessing",
         ['EfficientNet', 'MobileNetV2', 'ResNet50', 'None (÷255)'],
-    )
-
-    st.subheader("YOLOv8 Detection (Optional)")
-    enable_yolo = st.checkbox("Enable YOLOv8 detection", value=False)
-    yolo_path = st.text_input(
-        "YOLOv8 weights (.pt)",
-        value="runs/detect/aerial_yolov8/weights/best.pt",
-    )
-    conf_thresh = st.slider(
-        "Confidence threshold", 0.1, 0.9, 0.4, step=0.05
     )
 
     st.divider()
@@ -167,10 +128,9 @@ def get_preprocess_fn(name: str):
     }
     return mapping.get(name)
 
-
-clf_model  = load_classifier(clf_path)
-yolo_model = load_yolo(yolo_path) if enable_yolo else None
+# ADDED: Instantiate the variables so they exist for the main UI to use
 preprocess_fn = get_preprocess_fn(use_preprocess)
+clf_model = load_classifier(clf_path)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -237,32 +197,6 @@ if uploaded is not None:
             st.progress(int(prob_drone * 100),
                         text=f"🚁 Drone {prob_drone*100:.1f}%")
 
-        # ── YOLOv8 Detection ──────────────────────────────────
-        if enable_yolo:
-            st.subheader("📦 Object Detection (YOLOv8)")
-            if yolo_model is None:
-                st.warning(f"YOLOv8 weights not found at:\n`{yolo_path}`")
-            else:
-                with st.spinner("Running detection …"):
-                    detections, annotated_img = detect_objects(
-                        yolo_model, pil_img, conf_thresh
-                    )
-
-                st.image(annotated_img,
-                         caption="Detected objects",
-                         use_column_width=True)
-
-                if detections:
-                    st.write(f"**{len(detections)} object(s) detected:**")
-                    for i, d in enumerate(detections, 1):
-                        st.write(
-                            f"  {i}. {d['class']} — "
-                            f"confidence: {d['confidence']*100:.1f}%  |  "
-                            f"box: {d['box']}"
-                        )
-                else:
-                    st.info("No objects detected above the "
-                            f"confidence threshold ({conf_thresh:.0%}).")
 
 # ─────────────────────────────────────────────────────────────
 # About tab at bottom
