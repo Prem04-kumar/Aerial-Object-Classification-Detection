@@ -1,96 +1,145 @@
-# 🛸 Aerial Object Classification & Detection
-## Bird vs Drone — Custom CNN + Transfer Learning (EfficientNetB0)
+# 🛸 Aerial Object Classification (Bird 🐦 vs Drone 🚁)
 
 ## 📌 Project Overview
-This project builds a deep learning model to classify aerial objects as either Bird 🐦 or Drone 🚁 using:
-- **Custom CNN — Built from scratch**
-- **EfficientNetB0 — Transfer Learning from ImageNet**
-- **Streamlit Web App — Real-time classification**
+This project focuses on classifying aerial objects as either a **Bird** or a **Drone** using deep learning techniques.
+
+It combines:
+- 🧠 Custom CNN (built from scratch)
+- ⚡ Transfer Learning with EfficientNetB0
+- 🌐 Streamlit Web App for real-time predictions
+
+---
 
 ## 🎯 Results
-## 📊 Model Performance Comparison
 
-| Model | Type | Test Accuracy |
-|------|------|---------------|
-| Custom CNN | Built from scratch | ~67% |
-| EfficientNetB0 | Transfer Learning | ~98.6% ✅ |
+| Model           | Type                | Test Accuracy |
+|-----------------|--------------------|--------------|
+| Custom CNN      | Built from scratch | ~67%         |
+| EfficientNetB0  | Transfer Learning  | **~98.6% ✅** |
 
-🏆 **Best Model:** EfficientNetB0 with **98.6% accuracy**
+🏆 **Best Model:** EfficientNetB0 (98.6% accuracy)
+
+---
 
 ## 📁 Project Structure
-
-```
-aerial-detection/
+C:/VSCODE/Aerial_project/
 │
-├── aerial_object.ipynb
-├── streamlit_app.py
-├── requirements.txt
-├── README.md
-│
-├── models/
-│   └── best_model.keras
+├── streamlit_app.py # Streamlit deployment script
+├── aerial_object.ipynb # Model training & EDA
+├── best_model.keras # Trained EfficientNetB0 model
+├── requirements.txt # Dependencies
+├── README.md # Project documentation
 │
 └── classification_dataset/
-    ├── train/
-    │   ├── bird/
-    │   └── drone/
-    ├── valid/
-    │   ├── bird/
-    │   └── drone/
-    └── test/
-        ├── bird/
-        └── drone/
-```
+├── train/
+│ ├── bird/
+│ └── drone/
+├── valid/
+│ ├── bird/
+│ └── drone/
+└── test/
+├── bird/
+└── drone/
+
+
+---
 
 ## 📦 Dataset
-Download the classification dataset from Google Drive:
-🔗 https://drive.google.com/drive/folders/1nn1vqsh8juhafkJcleembrjQ9EqtIoMh
-After downloading, place it in the project folder as:
-classification_dataset/
-├── train/
-├── valid/
-└── test/
+
+📥 Download Dataset:  
+👉 [(https://drive.google.com/drive/folders/1_59wS79EcA3x6ojVCeNIIGXp9rQRclNO?usp=drive_link)]
+
+After downloading, place it like this:
+
+
+---
 
 ## 🧠 Pre-trained Model
-Download the trained model from Google Drive:
-🔗 (https://drive.google.com/file/d/1N5QdvT9tCWNflj7gQJJ14xVr9Kjw9A4V/view?usp=sharing)
-After downloading, place it in:
-models/best_model.keras
 
-# 🚀 How to Run
-## Step 1 — Clone the repository
-bashgit clone https://github.com/your-username/aerial-detection.git
-cd aerial-detection
-## Step 2 — Install dependencies
-bashpip install -r requirements.txt
-## Step 3 — Run the Streamlit app
+📥 Download Model:  
+👉 [(https://drive.google.com/file/d/1N5QdvT9tCWNflj7gQJJ14xVr9Kjw9A4V/view?usp=drive_link)]
+
+Place the model file at:
+C:\VSCODE\Aerial_project\best_model.keras
+
+
+---
+
+## 🚀 How to Run
+
+### 1️⃣ Setup Environment
+cd C:\VSCODE\Aerial_project
+
+
+### 2️⃣ Install Dependencies
+pip install -r requirements.txt
+
+
+### 3️⃣ Run Streamlit App
 streamlit run streamlit_app.py
 
 
+---
 
-# 📊 Model Architecture
-## Custom CNN
+## 📊 Model Architecture
 
-* 3 Convolutional blocks with BatchNormalization & Dropout
-* GlobalAveragePooling2D
-* Dense layers with Sigmoid output
+### 🔹 Custom CNN
+- 3 Convolutional Layers
+- Batch Normalization
+- Dropout Regularization
+- GlobalAveragePooling2D
+- Dense + Sigmoid Output
 
-## EfficientNetB0 (Transfer Learning)
+### 🔹 EfficientNetB0 (Transfer Learning)
+- Pre-trained on ImageNet
+- Frozen base layers
+- Custom classification head
+- Fine-tuned for Bird vs Drone
 
-* Pre-trained on ImageNet (frozen base)
-* Custom classification head
-* Fine-tuned for Bird vs Drone classification
-
+---
 
 ## 📈 Training Details
-ParameterValueImage Size224 × 224Batch Size32OptimizerAdamLossBinary CrossentropyEpochs30 (EarlyStopping)
+
+| Parameter   | Value                |
+|------------|---------------------|
+| Image Size | 224 × 224           |
+| Batch Size | 32                  |
+| Optimizer  | Adam                |
+| Loss       | Binary Crossentropy |
+| Epochs     | 30 (EarlyStopping)  |
+
+---
 
 ## 🌐 Streamlit App Features
 
-- **Upload any Bird or Drone image (JPG/PNG)**
-- **Real-time classification with confidence score**
-- **Probability distribution chart**
-- **Supports EfficientNet preprocessing**
+- 📤 Upload Image (JPG, JPEG, PNG)
+- ⚡ Real-time Prediction
+- 📊 Confidence Score Visualization
+- 🔄 Preprocessing Options (EfficientNet / MobileNet)
+
+---
+
+## 🖼️ Demo
+
+*(Add screenshots of your Streamlit app here)*
+
+---
+
+## 💡 Use Cases
+
+- 🛡️ Surveillance Systems
+- ✈️ Airspace Monitoring
+- 🌿 Wildlife Observation
+- 🚁 Drone Detection & Security
+
+---
 
 ## 👨‍💻 Author
-A Prem Kumar
+
+**A Prem Kumar**
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!
