@@ -239,14 +239,7 @@ streamlit run streamlit_app.py
 Open your browser at `http://localhost:8501` and upload an image to classify!
  
 ---
- 
-## 🖼️ App Demo
- 
-> 📸 Upload a screenshot of your Streamlit app and place it here:
- 
-```
-![App Demo](images/demo_screenshot.png)
-```
+
  
 ---
  
